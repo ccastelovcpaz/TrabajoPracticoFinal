@@ -1,0 +1,9 @@
+puntosSiAciertaGanador=1
+puntosSiAciertaEmpate=1
+puntosSiAciertaPerdedor=1
+puntosExtraAciertaRonda=2
+puntosExtraAciertaFase=3
+cantidadArgumentosArchivoResultados=11
+cantidadArgumentosArchivoPronosticos=7
+separadorCSV=;
+baseDeDatos=jdbc:mysql://localhost:3306/pronosticos

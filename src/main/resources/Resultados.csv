@@ -1,0 +1,19 @@
+idFase;idRonda;idPartido;idEquipo1;nombreEquipo1;descripcionEquipo1;golesEquipo1;idEquipo2;nombreEquipo2;descripcionEquipo2;golesEquipo2
+1;1;1;1;Argentina;Selecci�n de Argentina;1;2;Arabia Saudita;Selecci�n de Arabia Saudita;2
+1;1;2;3;Mexico;Selecci�n de Mexico;0;4;Polonia;Selecci�n de Polonia;0
+1;1;3;4;Polonia;Selecci�n de Polonia;2;2;Arabia Saudita;Selecci�n de Arabia Saudita;0
+1;1;4;1;Argentina;Selecci�n de Argentina;2;3;Mexico;Selecci�n de Mexico;0
+1;1;5;4;Polonia;Selecci�n de Polonia;0;1;Argentina;Selecci�n de Argentina;2
+1;1;6;2;Arabia Saudita;Selecci�n de Arabia Saudita;1;3;Mexico;Selecci�n de Mexico;2
+1;2;7;1;Argentina;Selecci�n de Argentina;3;2;Arabia Saudita;Selecci�n de Arabia Saudita;0
+1;2;8;3;Mexico;Selecci�n de Mexico;2;4;Polonia;Selecci�n de Polonia;1
+1;2;9;4;Polonia;Selecci�n de Polonia;0;2;Arabia Saudita;Selecci�n de Arabia Saudita;0
+1;2;10;1;Argentina;Selecci�n de Argentina;2;3;Mexico;Selecci�n de Mexico;1
+1;2;11;4;Polonia;Selecci�n de Polonia;1;1;Argentina;Selecci�n de Argentina;1
+1;2;12;2;Arabia Saudita;Selecci�n de Arabia Saudita;0;3;Mexico;Selecci�n de Mexico;1
+1;3;13;1;Argentina;Selecci�n de Argentina;1;2;Arabia Saudita;Selecci�n de Arabia Saudita;0
+1;3;14;3;Mexico;Selecci�n de Mexico;1;4;Polonia;Selecci�n de Polonia;1
+1;3;15;4;Polonia;Selecci�n de Polonia;1;2;Arabia Saudita;Selecci�n de Arabia Saudita;0
+1;3;16;1;Argentina;Selecci�n de Argentina;3;3;Mexico;Selecci�n de Mexico;2
+1;3;17;4;Polonia;Selecci�n de Polonia;1;1;Argentina;Selecci�n de Argentina;2
+1;3;18;2;Arabia Saudita;Selecci�n de Arabia Saudita;0;3;Mexico;Selecci�n de Mexico;2
