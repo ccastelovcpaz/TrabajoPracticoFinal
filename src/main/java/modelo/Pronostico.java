@@ -1,29 +1,18 @@
 package modelo;
 
 public class Pronostico {
-	
-	private String persona;
 	private Partido partido;
 	private Equipo equipo;
 //	private String pronostico;
 	private ResultadoEquipoEnum pronostico;
 	
-	public Pronostico(String persona, Partido partido, Equipo equipo, ResultadoEquipoEnum pronostico) {
-		this.persona = persona;
+	public Pronostico(Partido partido, Equipo equipo, ResultadoEquipoEnum pronostico) {
 		this.partido = partido;
 		this.equipo = equipo;
 		this.pronostico = pronostico;
 	}
 
 	public Pronostico() {
-	}
-	
-	public String getPersona() {
-		return this.persona;
-	}
-
-	public void setPersona(String persona) {
-		this.persona = persona;
 	}
 	
 	public Partido getPartido() {
@@ -52,7 +41,7 @@ public class Pronostico {
 	
 	@Override
 	public String toString() {
-		return "[persona=" + persona + ", partido=" + partido + ", equipo=" + equipo + ", pronostico=" + pronostico + "]";
+		return "[partido=" + partido + ", equipo=" + equipo + ", pronostico=" + pronostico + "]";
 	}
 
 	public int getPuntos(Configuracion config) {

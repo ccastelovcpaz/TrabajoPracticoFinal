@@ -50,12 +50,17 @@ class CalculoPuntajeTest {
 	@Test
 	void testCalculoPuntos1() {
 		ArrayList<Pronostico> pronosticos = new ArrayList<Pronostico>();
-		pronosticos.add(new Pronostico("Claudio",partidos.get(0),equipos.get(0),ResultadoEquipoEnum.GANA));
-		pronosticos.add(new Pronostico("Claudio",partidos.get(1),equipos.get(2),ResultadoEquipoEnum.GANA));
-		pronosticos.add(new Pronostico("Claudio",partidos.get(2),equipos.get(0),ResultadoEquipoEnum.EMPATA));
-		pronosticos.add(new Pronostico("Claudio",partidos.get(3),equipos.get(0),ResultadoEquipoEnum.PIERDE));
-		pronosticos.add(new Pronostico("Claudio",partidos.get(4),equipos.get(1),ResultadoEquipoEnum.EMPATA));
-		ArrayList<Persona> personas = CalcularPuntos.CalcularPuntosPartidos(pronosticos,fases,config);
+		pronosticos.add(new Pronostico(partidos.get(0),equipos.get(0),ResultadoEquipoEnum.GANA));
+		pronosticos.add(new Pronostico(partidos.get(1),equipos.get(2),ResultadoEquipoEnum.GANA));
+		pronosticos.add(new Pronostico(partidos.get(2),equipos.get(0),ResultadoEquipoEnum.EMPATA));
+		pronosticos.add(new Pronostico(partidos.get(3),equipos.get(0),ResultadoEquipoEnum.PIERDE));
+		pronosticos.add(new Pronostico(partidos.get(4),equipos.get(1),ResultadoEquipoEnum.EMPATA));
+		Persona persona = new Persona();
+		persona.setNombre("Claudio");
+		persona.setPronosticos(pronosticos);
+		ArrayList<Persona> personas = new ArrayList<Persona>();
+		personas.add(persona);
+		CalcularPuntos.CalcularPuntosPartidos(personas,fases,config);
 		assertEquals(4,personas.get(0).getPuntosPartidos());
 		assertEquals(4,personas.get(0).getCantidadDeAciertos());
 	}
@@ -63,12 +68,17 @@ class CalculoPuntajeTest {
 	@Test
 	void testCalculoPuntos2() {
 		ArrayList<Pronostico> pronosticos = new ArrayList<Pronostico>();
-		pronosticos.add(new Pronostico("Claudio",partidos.get(0),equipos.get(0),ResultadoEquipoEnum.GANA));
-		pronosticos.add(new Pronostico("Claudio",partidos.get(1),equipos.get(2),ResultadoEquipoEnum.EMPATA));
-		pronosticos.add(new Pronostico("Claudio",partidos.get(2),equipos.get(0),ResultadoEquipoEnum.EMPATA));
-		pronosticos.add(new Pronostico("Claudio",partidos.get(3),equipos.get(0),ResultadoEquipoEnum.PIERDE));
-		pronosticos.add(new Pronostico("Claudio",partidos.get(4),equipos.get(1),ResultadoEquipoEnum.EMPATA));
-		ArrayList<Persona> personas = CalcularPuntos.CalcularPuntosPartidos(pronosticos,fases,config);
+		pronosticos.add(new Pronostico(partidos.get(0),equipos.get(0),ResultadoEquipoEnum.GANA));
+		pronosticos.add(new Pronostico(partidos.get(1),equipos.get(2),ResultadoEquipoEnum.EMPATA));
+		pronosticos.add(new Pronostico(partidos.get(2),equipos.get(0),ResultadoEquipoEnum.EMPATA));
+		pronosticos.add(new Pronostico(partidos.get(3),equipos.get(0),ResultadoEquipoEnum.PIERDE));
+		pronosticos.add(new Pronostico(partidos.get(4),equipos.get(1),ResultadoEquipoEnum.EMPATA));
+		Persona persona = new Persona();
+		persona.setNombre("Claudio");
+		persona.setPronosticos(pronosticos);
+		ArrayList<Persona> personas = new ArrayList<Persona>();
+		personas.add(persona);
+		CalcularPuntos.CalcularPuntosPartidos(personas,fases,config);
 		assertFalse(personas.get(0).getPuntosPartidos()==4);
 		assertFalse(personas.get(0).getCantidadDeAciertos()==4);
 	}

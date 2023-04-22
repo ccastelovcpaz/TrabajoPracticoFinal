@@ -16,13 +16,17 @@ public class LectorArchivosCSV {
     List<ArchivoResultados> lineasArchivoResultados;
     List<ArchivoPronosticos> lineasArchivoPronosticos;
     
-    public LectorArchivosCSV(String ruta, String separadorCSV) {
-        this.rutaArchivo = ruta;
+    public LectorArchivosCSV(String rutaArchivo, String separadorCSV) {
+        this.rutaArchivo = rutaArchivo;
         this.separadorCSV = separadorCSV;
         this.lineasArchivoResultados = new ArrayList<>();
         this.lineasArchivoPronosticos = new ArrayList<>();
     }
     
+    public void setRutaArchivo (String rutaArchivo) {
+    	this.rutaArchivo=rutaArchivo;
+    }
+   
     public void controlOKCantidadArgumentosArhivo(int cantidadArgumentos) throws LineaIncorrectaException {
     	String[] lineaCortada = null;
     	try {
@@ -130,7 +134,7 @@ public class LectorArchivosCSV {
 		return false;
 	}
 
-	public void listarResultados() {
+	public void listarResultadosCSV() {
     	for (ArchivoResultados lineaArchivoResultados : this.lineasArchivoResultados) {
     		System.out.println(lineaArchivoResultados.toString());
     	}
@@ -169,7 +173,7 @@ public class LectorArchivosCSV {
         this.lineasArchivoPronosticos = listaDeResultados;
     }
     
-    public void listarPronosticos() {
+    public void listarPronosticosCSV() {
     	for (ArchivoPronosticos lineaArchivoPronosticos : this.lineasArchivoPronosticos) {
     		System.out.println(lineaArchivoPronosticos.toString());
     	}
@@ -179,7 +183,9 @@ public class LectorArchivosCSV {
 		ArrayList<Pronostico> pronosticos = new ArrayList<Pronostico>();
 		for (ArchivoPronosticos lineaArchivoPronosticos : this.lineasArchivoPronosticos) {
 			Pronostico nuevoPronostico = new Pronostico();
-			nuevoPronostico.setPersona(lineaArchivoPronosticos.getPersona());
+//
+//			nuevoPronostico.setPersona(lineaArchivoPronosticos.getPersona());
+//
 			nuevoPronostico.setPartido(getPartidoPorId(lineaArchivoPronosticos.getIdPartido(),partidos));
 			nuevoPronostico.setEquipo(getEquipoPorId(lineaArchivoPronosticos.getIdEquipo1(),equipos));
 			nuevoPronostico.setPronostico(getPronostico(lineaArchivoPronosticos.getGana1(), 

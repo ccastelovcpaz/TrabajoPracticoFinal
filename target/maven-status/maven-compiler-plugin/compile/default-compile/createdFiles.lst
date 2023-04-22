@@ -1,0 +1,17 @@
+modelo\LectorArchivosCSV.class
+modelo\Fase.class
+modelo\Pronostico.class
+modelo\ConectorSQL.class
+org\example\Main.class
+modelo\Configuracion.class
+modelo\Partido.class
+modelo\CalcularPuntos.class
+modelo\Ronda.class
+modelo\Equipo.class
+modelo\ArchivoResultados.class
+modelo\Persona.class
+modelo\ArchivoPronosticos.class
+modelo\Listados.class
+modelo\PronosticosBD.class
+modelo\LineaIncorrectaException.class
+modelo\ResultadoEquipoEnum.class

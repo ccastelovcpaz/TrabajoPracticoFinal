@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class PronosticosBD {
 
@@ -66,8 +67,8 @@ public class PronosticosBD {
 		}
 	}
 
-	public static ArrayList<Pronostico> getPronosticosBD(ArrayList<Partido> partidos, ArrayList<Equipo> equipos, String baseDeDatos) {
-		ArrayList<Pronostico> pronosticos = new ArrayList<Pronostico>();
+	public static ArrayList<Persona> getPronosticosBD(ArrayList<Partido> partidos, ArrayList<Equipo> equipos, String baseDeDatos) {
+		ArrayList<Persona> personas = new ArrayList<Persona>();
 		Connection conexion = null;
 		Statement consulta = null;
 		String sql;
@@ -75,21 +76,32 @@ public class PronosticosBD {
 		try {
 			conexion = DriverManager.getConnection(baseDeDatos, USER, PASS);
 			consulta = conexion.createStatement();
-			sql = "SELECT * FROM pronosticoscsv";
+			sql = "SELECT * FROM pronosticoscsv ORDER BY persona, idPartido";
             ResultSet resultado = consulta.executeQuery(sql);
-
+            
+            boolean primerRegistro=true;
+            Persona persona = new Persona();
             while (resultado.next()) {
-    			Pronostico nuevoPronostico = new Pronostico();
-    			nuevoPronostico.setPersona(resultado.getString("persona"));
+            	if (primerRegistro) {
+            		persona.setNombre(resultado.getString("persona"));
+            		primerRegistro=false;
+            	}
+        		Pronostico nuevoPronostico = new Pronostico();
     			nuevoPronostico.setPartido(getPartidoPorId(resultado.getInt("idPartido"),partidos));
     			nuevoPronostico.setEquipo(getEquipoPorId(resultado.getInt("idEquipo1"),equipos));
     			nuevoPronostico.setPronostico(getPronostico(resultado.getString("gana1"), 
     														resultado.getString("empata"),
     					                                    resultado.getString("gana2")));
-        		pronosticos.add(nuevoPronostico);
-//        		System.out.println(nuevoPronostico);
-            }
-            
+            	if (persona.getNombre().equals(resultado.getString("persona"))) {
+            		persona.agregarPronostico(nuevoPronostico);
+            	} else {
+            		personas.add(persona);
+            		persona = new Persona();
+            		persona.setNombre(resultado.getString("persona"));
+            		persona.agregarPronostico(nuevoPronostico);
+            	}
+            } 
+            personas.add(persona);
             resultado.close();
 			consulta.close();
             conexion.close();
@@ -110,19 +122,14 @@ public class PronosticosBD {
 				se.printStackTrace();
 			}
 		}
-		return pronosticos;
+//		for (Persona per : personas) {
+//			System.out.println(per);
+//			for (Pronostico pro : per.getPronosticos()) {
+//				System.out.println("       "+pro);
+//			}
+//		}
+		return personas;
 	}
-//		for (ArchivoPronosticos lineaArchivoPronosticos : this.lineasArchivoPronosticos) {
-//			Pronostico nuevoPronostico = new Pronostico();
-//			nuevoPronostico.setPersona(lineaArchivoPronosticos.getPersona());
-//			nuevoPronostico.setPartido(getPartidoPorId(lineaArchivoPronosticos.getIdPartido(),partidos));
-//			nuevoPronostico.setEquipo(getEquipoPorId(lineaArchivoPronosticos.getIdEquipo1(),equipos));
-//			nuevoPronostico.setPronostico(getPronostico(lineaArchivoPronosticos.getGana1(), 
-//					                                    lineaArchivoPronosticos.getEmpata(),
-//					                                    lineaArchivoPronosticos.getGana2()));
-//    		pronosticos.add(nuevoPronostico);
-////    		System.out.println(nuevoPronostico);
-//    	}
 	
 	private static Partido getPartidoPorId(Integer idPartido, ArrayList<Partido> partidos) {
 		for (Partido partido : partidos) {

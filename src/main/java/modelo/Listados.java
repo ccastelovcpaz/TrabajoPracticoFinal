@@ -4,6 +4,25 @@ import java.util.ArrayList;
 
 public class Listados {
 
+	// public static void listarPuntosPersonas(ArrayList<Persona> personas)
+	// public static void listarPronosticos(ArrayList<Pronostico> pronosticos)
+	// public static void listarFases(ArrayList<Fase> fases)
+	// public static void listarRondas(ArrayList<Ronda> rondas)
+	// public static void listarPartidos(ArrayList<Partido> partidos)
+	// public static void listarEquipos(ArrayList<Equipo> equipos)
+	// public static void listarPronosticosCSV(LectorArchivosCSV lectorArchivos)
+	// public static void listarResultadosCSV(LectorArchivosCSV lectorArchivos)
+	
+	public static void listarPuntosPersonas(ArrayList<Persona> personas) {
+		System.out.println("Los resultados son:\n");
+		for (Persona persona : personas) {
+        	System.out.println("Persona: "+persona.getNombre()+", Total de puntos obtenidos: "+(persona.getPuntosPartidos()+persona.getPuntosRondas()+persona.getPuntosFases())+
+        			           "\n         Cantidad de pronosticos acertados: "+persona.getCantidadDeAciertos()+", Puntos obtenidos por pronósticos: "+persona.getPuntosPartidos()+
+        			           "\n         Cantidad de rondas acertadas: "+persona.getCantidadRondasAcertadas()+", Puntos obtenidos por rondas: "+persona.getPuntosRondas()+
+        			           "\n         Cantidad de fases acertadas: "+persona.getCantidadFasesAcertadas()+", Puntos obtenidos por fases: "+persona.getPuntosFases()+"\n");
+        }		
+	}
+    
 	public static void listarPronosticos(ArrayList<Pronostico> pronosticos) {
 		System.out.println("- Pronósticos:");
 		for (int i=0; i<pronosticos.size();i++) {
@@ -68,5 +87,13 @@ public class Listados {
 		}
 		System.out.print("\n");
 	}
+	
+    public static void listarPronosticosCSV(LectorArchivosCSV lectorArchivos) {
+    	lectorArchivos.listarPronosticosCSV();
+    }
+	
+    public static void listarResultadosCSV(LectorArchivosCSV lectorArchivos) {
+    	lectorArchivos.listarResultadosCSV();
+    }
 
 }

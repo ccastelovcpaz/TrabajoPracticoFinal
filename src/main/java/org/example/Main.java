@@ -9,6 +9,7 @@ import java.util.List;
 
 import modelo.LectorArchivosCSV;
 import modelo.LineaIncorrectaException;
+import modelo.ArchivoResultados;
 import modelo.CalcularPuntos;
 import modelo.Configuracion;
 import modelo.Equipo;
@@ -26,15 +27,11 @@ public class Main {
     		mostrarFormato();
     		System.exit(1);
     	}
-    	
-    	Configuracion config = new Configuracion(args[2]);    	
-//    	System.out.println(config);
-    	
+    	Configuracion config = new Configuracion(args[2]);   	
     	LectorArchivosCSV lectorArchivos = new LectorArchivosCSV(args[0],config.getSeparadorCSV());        
     	
-//    	String rutaArchivoPrueba = "src\\main\\resources\\ResultadosDos.csv";
-//    	lectorArchivos = new LectorArchivosCSV(rutaArchivoPrueba,config.getSeparadorCSV());
     	lectorArchivos = new LectorArchivosCSV(args[0],config.getSeparadorCSV());
+//    	lectorArchivos.setRutaArchivo("src\\main\\resources\\ResultadosDos.csv");
     	try {
         	lectorArchivos.controlOKCantidadArgumentosArhivo(config.getCantidadArgumentosArchivoResultados());
         	lectorArchivos.parsearArchivoResultados();
@@ -47,10 +44,9 @@ public class Main {
         ArrayList<Ronda> rondas = lectorArchivos.cargarRondas(partidos);
         ArrayList<Fase> fases = lectorArchivos.cargarFases(rondas);
         
-//        String rutaArchivoPrueba2 = "src\\main\\resources\\PronosticosDos.csv";
-//        String rutaArchivoPrueba2 = "src\\main\\resources\\PronosticosTres.csv";
-//        lectorArchivos = new LectorArchivosCSV(rutaArchivoPrueba2,config.getSeparadorCSV());
-        lectorArchivos = new LectorArchivosCSV(args[1],config.getSeparadorCSV());
+        lectorArchivos.setRutaArchivo(args[1]);
+//        lectorArchivos.setRutaArchivo("src\\main\\resources\\PronosticosDos.csv");
+//        lectorArchivos.setRutaArchivo("src\\main\\resources\\PronosticosTres.csv");
         try {
         	lectorArchivos.controlOKCantidadArgumentosArhivo(config.getCantidadArgumentosArchivoPronosticos());
         	lectorArchivos.parsearArchivoPronosticos();
@@ -59,40 +55,21 @@ public class Main {
         	System.exit(2);
         }
         PronosticosBD.setPronosticosBD(lectorArchivos,config.getBaseDeDatos());
-        ArrayList<Pronostico> pronosticos = PronosticosBD.getPronosticosBD(partidos,equipos,config.getBaseDeDatos());
+        ArrayList<Persona> personas = PronosticosBD.getPronosticosBD(partidos,equipos,config.getBaseDeDatos());
 //        ArrayList<Pronostico> pronosticos = lectorArchivos.cargarPronosticos(partidos,equipos);
-
-        listadosVarios(lectorArchivos,equipos,partidos,rondas,fases,pronosticos);
         
-        ArrayList<Persona> personas = CalcularPuntos.CalcularPuntosPartidos(pronosticos,fases,config);
-        
-        System.out.println("Se juegan "+partidos.size()+" partidos distribuídos en "+rondas.size()+" rondas, y participan "+equipos.size()+" equipos.\n"
-                +"Hay "+personas.size()+" personas que han realizado "+pronosticos.size()+" pronósticos.\n\n");
-        
-        listarPuntosPersonas(personas);
+        CalcularPuntos.CalcularPuntosPartidos(personas,fases,config);
+        System.out.println("Se juegan "+partidos.size()+" partidos distribuídos en "+fases.size()+" fases y "+rondas.size()+" rondas, y participan "+equipos.size()+" equipos.\n"
+                +"Hay "+personas.size()+" personas que han realizado "+cantidadDePronosticos(personas)+" pronósticos.\n\n");
+        Listados.listarPuntosPersonas(personas);
     }
 
-	private static void listarPuntosPersonas(ArrayList<Persona> personas) {
-		System.out.println("Los resultados son:\n");
-		for (Persona persona : personas) {
-        	System.out.println("Persona: "+persona.getNombre()+", Total de puntos obtenidos: "+(persona.getPuntosPartidos()+persona.getPuntosRondas()+persona.getPuntosFases())+
-        			           "\n         Cantidad de pronosticos acertados: "+persona.getCantidadDeAciertos()+", Puntos obtenidos por pronósticos: "+persona.getPuntosPartidos()+
-        			           "\n         Cantidad de rondas acertadas: "+persona.getCantidadRondasAcertadas()+", Puntos obtenidos por rondas: "+persona.getPuntosRondas()+
-        			           "\n         Cantidad de fases acertadas: "+persona.getCantidadFasesAcertadas()+", Puntos obtenidos por fases: "+persona.getPuntosFases()+"\n");
-        }		
-	}
-
-    private static void listadosVarios(LectorArchivosCSV lectorArchivos, ArrayList<Equipo> equipos,
-			ArrayList<Partido> partidos, ArrayList<Ronda> rondas, ArrayList<Fase> fases,
-			ArrayList<Pronostico> pronosticos) {
-//      lectorArchivos.listarResultados();        
-//      lectorArchivos.listarPronosticos();
-      
-//      Listados.listarEquipos(equipos);
-//      Listados.listarPartidos(partidos);     
-//      Listados.listarRondas(rondas); 
-//      Listados.listarFases(fases);
-//      Listados.listarPronosticos(pronosticos);
+    private static int cantidadDePronosticos(ArrayList<Persona> personas) {
+    	int cantidadDePronosticos=0;
+    	for (Persona persona : personas) {
+    		cantidadDePronosticos+=persona.getPronosticos().size();
+    	}
+    	return cantidadDePronosticos;
     }
     
 	private static void mostrarFormato() {

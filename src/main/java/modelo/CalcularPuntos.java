@@ -6,71 +6,61 @@ public class CalcularPuntos {
 	
 	private ArrayList<Persona> personas; 
 	
-	public static ArrayList<Persona> CalcularPuntosPartidos(ArrayList<Pronostico> pronosticos,ArrayList<Fase> fases, Configuracion config) {
-		ArrayList<Persona> personas = new ArrayList<Persona>();
-		String persona = null;
-		Fase fase;
-		Ronda ronda;
-		int puntosPartidos;
-		int puntosRondas;
-		int puntosFases;
-		int puntosPartidosTmp;
-		int cantidadDeAciertos;	
-		int cantidadDeAciertosRondas;
-		int cantidadDeAciertosFases;
-		int i=0;
+	public static void CalcularPuntosPartidos(ArrayList<Persona> personas,ArrayList<Fase> fases, Configuracion config) {
 		
-		while (i<pronosticos.size()) {
-			persona = pronosticos.get(i).getPersona();
-			puntosPartidos=0;
-			puntosRondas=0;
-			puntosFases=0;
-			cantidadDeAciertos=0;
-			cantidadDeAciertosRondas=0;
-			cantidadDeAciertosFases=0;
-			while (pronosticos.get(i).getPersona().equals(persona)
-								&& i<pronosticos.size()) {
-				
-				fase = getFasePorIdPartido(pronosticos.get(i).getPartido().getIdPartido(),fases);
-				int cantidadRondasFase=fase.getRondas().size();
+		for (Persona persona : personas) {
+			int cantidadDeAciertosPartidos=0;
+			int cantidadDeAciertosRondas=0;
+			int cantidadDeAciertosFases=0;
+			int puntosPartidosTmp=0;
+			int puntosPartidos=0;
+			int puntosRondas=0;
+			int puntosFases=0;
+			int i=0;
+			while (i<persona.getPronosticos().size()) {
+				Fase fase = getFasePorIdPartido(persona.getPronosticos().get(i).getPartido().getIdPartido(),fases);
 				int cantidadDeAciertosRondasTMP=0;
-				while (fase==getFasePorIdPartido(pronosticos.get(i).getPartido().getIdPartido(),fases)
-								&& pronosticos.get(i).getPersona().equals(persona)
-								&& i<pronosticos.size()) {
-					
-					ronda = getRondaPorIdPartido(pronosticos.get(i).getPartido().getIdPartido(),fase.getRondas());
-					int cantidadPartidosRonda = ronda.getPartidos().size();
-					int cantidadDeAciertosTmp=0;
-					while (ronda==getRondaPorIdPartido(pronosticos.get(i).getPartido().getIdPartido(),fase.getRondas())
-								&& fase==getFasePorIdPartido(pronosticos.get(i).getPartido().getIdPartido(),fases)
-								&& pronosticos.get(i).getPersona().equals(persona)
-								&& i<pronosticos.size()) {
-						
-						puntosPartidosTmp = pronosticos.get(i).getPuntos(config);
+				// empieza FASE
+				while (fase == getFasePorIdPartido(persona.getPronosticos().get(i).getPartido().getIdPartido(),fases)
+						&& i<persona.getPronosticos().size()) {
+					Ronda ronda = getRondaPorIdPartido(persona.getPronosticos().get(i).getPartido().getIdPartido(),fase.getRondas());
+					int cantidadDeAciertosPartidosTmp=0;
+					// empieza RONDA
+					while (ronda == getRondaPorIdPartido(persona.getPronosticos().get(i).getPartido().getIdPartido(),fase.getRondas())
+							&& fase == getFasePorIdPartido(persona.getPronosticos().get(i).getPartido().getIdPartido(),fases)
+									&& i<persona.getPronosticos().size()) {
+						puntosPartidosTmp = persona.getPronosticos().get(i).getPuntos(config);
 						if (puntosPartidosTmp>0) {
-							cantidadDeAciertosTmp++;
+							cantidadDeAciertosPartidosTmp++;
 							puntosPartidos+= puntosPartidosTmp;
 						}
 						i++;
-						if (i==pronosticos.size()) break;
-					} //fin ronda
-					cantidadDeAciertos+=cantidadDeAciertosTmp;
-					if (cantidadDeAciertosTmp==cantidadPartidosRonda) {
+						if (i==persona.getPronosticos().size()) break;
+					}
+					// termino RONDA, tengo cantidadDeAciertosPartidosTmp y puntosPartidos
+					// guardo cantidadDeAciertosPartidos
+					// sumo puntosRondas si acerto todo y cuento rondas acertadas
+					cantidadDeAciertosPartidos+=cantidadDeAciertosPartidosTmp;
+					if (cantidadDeAciertosPartidosTmp==ronda.getPartidos().size()) {
 						puntosRondas+=config.getPuntosExtraAciertaRonda();
 						cantidadDeAciertosRondasTMP++;
 					}
-					if (i==pronosticos.size()) break;
-				} // fin fase
-				if (cantidadDeAciertosRondasTMP==cantidadRondasFase) {
+					if (i==persona.getPronosticos().size()) break;
+				}
+				if (cantidadDeAciertosRondasTMP==fase.getRondas().size()) {
 					puntosFases+=config.getPuntosExtraAciertaFase();
 					cantidadDeAciertosFases++;
 				}
 				cantidadDeAciertosRondas+=cantidadDeAciertosRondasTMP;
-				if (i==pronosticos.size()) break;
-			} // fin pronosticos
-			personas.add(new Persona(persona,puntosPartidos,puntosRondas,puntosFases,cantidadDeAciertos,cantidadDeAciertosRondas,cantidadDeAciertosFases));
+				if (i==persona.getPronosticos().size()) break;
+			}
+			persona.setPuntosPartidos(puntosPartidos);
+			persona.setPuntosRondas(puntosRondas);
+			persona.setPuntosFases(puntosFases);
+			persona.setCantidadDeAciertos(cantidadDeAciertosPartidos);
+			persona.setCantidadRondasAcertadas(cantidadDeAciertosRondas);
+			persona.setCantidadFasesAcertadas(cantidadDeAciertosFases);
 		}
-		return personas;
 	}
 
 	private static Ronda getRondaPorIdPartido(int idPartido, ArrayList<Ronda> rondas) {
