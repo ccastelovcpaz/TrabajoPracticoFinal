@@ -20,12 +20,10 @@ public class CalcularPuntos {
 			while (i<persona.getPronosticos().size()) {
 				Fase fase = getFasePorIdPartido(persona.getPronosticos().get(i).getPartido().getIdPartido(),fases);
 				int cantidadDeAciertosRondasTMP=0;
-				// empieza FASE
 				while (fase == getFasePorIdPartido(persona.getPronosticos().get(i).getPartido().getIdPartido(),fases)
 						&& i<persona.getPronosticos().size()) {
 					Ronda ronda = getRondaPorIdPartido(persona.getPronosticos().get(i).getPartido().getIdPartido(),fase.getRondas());
 					int cantidadDeAciertosPartidosTmp=0;
-					// empieza RONDA
 					while (ronda == getRondaPorIdPartido(persona.getPronosticos().get(i).getPartido().getIdPartido(),fase.getRondas())
 							&& fase == getFasePorIdPartido(persona.getPronosticos().get(i).getPartido().getIdPartido(),fases)
 									&& i<persona.getPronosticos().size()) {
@@ -37,9 +35,6 @@ public class CalcularPuntos {
 						i++;
 						if (i==persona.getPronosticos().size()) break;
 					}
-					// termino RONDA, tengo cantidadDeAciertosPartidosTmp y puntosPartidos
-					// guardo cantidadDeAciertosPartidos
-					// sumo puntosRondas si acerto todo y cuento rondas acertadas
 					cantidadDeAciertosPartidos+=cantidadDeAciertosPartidosTmp;
 					if (cantidadDeAciertosPartidosTmp==ronda.getPartidos().size()) {
 						puntosRondas+=config.getPuntosExtraAciertaRonda();

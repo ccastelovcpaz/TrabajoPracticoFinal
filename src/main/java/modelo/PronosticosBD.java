@@ -14,7 +14,7 @@ import java.util.Scanner;
 
 public class PronosticosBD {
 
-	public static void setPronosticosBD(LectorArchivosCSV lectorArchivos, String baseDeDatos) {
+	public static int setPronosticosBD(LectorArchivosCSV lectorArchivos, String baseDeDatos) {
 		String persona;
 		Integer idPartido;
 		Integer idEquipo1;
@@ -25,11 +25,11 @@ public class PronosticosBD {
 		Connection conexion = null;
 		Statement consulta = null;
 		String sql;
+		int contadorRegistros=0;
 
 		try {
 			conexion = DriverManager.getConnection(baseDeDatos, USER, PASS);
 			consulta = conexion.createStatement();
-			int contadorRegistros=0;
 			consulta.executeUpdate("delete from pronosticosCSV;");
 			consulta.executeUpdate("alter table pronosticosCSV AUTO_INCREMENT = 1;");
 			for (ArchivoPronosticos lineaArchivoPronosticos : lectorArchivos.lineasArchivoPronosticos) {
@@ -50,7 +50,9 @@ public class PronosticosBD {
             conexion.close();
 		} catch (SQLException se) {
 			// Execpción ante problemas de conexión
+			org.example.Main.limpiarConsola();
 			se.printStackTrace();
+			org.example.Main.pausa("\nPresione <enter> para terminar...");
 		} finally {
 			// Esta sentencia es para que ante un problema con la base igual se cierren las conexiones
 			try {
@@ -65,6 +67,7 @@ public class PronosticosBD {
 				se.printStackTrace();
 			}
 		}
+		return contadorRegistros;
 	}
 
 	public static ArrayList<Persona> getPronosticosBD(ArrayList<Partido> partidos, ArrayList<Equipo> equipos, String baseDeDatos) {
@@ -107,7 +110,9 @@ public class PronosticosBD {
             conexion.close();
 		} catch (SQLException se) {
 			// Execpción ante problemas de conexión
+			org.example.Main.limpiarConsola();
 			se.printStackTrace();
+			org.example.Main.pausa("\nPresione <enter> para terminar...");
 		} finally {
 			// Esta sentencia es para que ante un problema con la base igual se cierren las conexiones
 			try {
@@ -122,12 +127,6 @@ public class PronosticosBD {
 				se.printStackTrace();
 			}
 		}
-//		for (Persona per : personas) {
-//			System.out.println(per);
-//			for (Pronostico pro : per.getPronosticos()) {
-//				System.out.println("       "+pro);
-//			}
-//		}
 		return personas;
 	}
 	

@@ -3,7 +3,6 @@ package modelo;
 public class Pronostico {
 	private Partido partido;
 	private Equipo equipo;
-//	private String pronostico;
 	private ResultadoEquipoEnum pronostico;
 	
 	public Pronostico(Partido partido, Equipo equipo, ResultadoEquipoEnum pronostico) {

@@ -5,15 +5,6 @@ import java.util.Collections;
 import java.util.Comparator;
 
 public class Listados {
-
-	// public static void listarPuntosPersonas(ArrayList<Persona> personas)
-	// public static void listarPronosticos(ArrayList<Pronostico> pronosticos)
-	// public static void listarFases(ArrayList<Fase> fases)
-	// public static void listarRondas(ArrayList<Ronda> rondas)
-	// public static void listarPartidos(ArrayList<Partido> partidos)
-	// public static void listarEquipos(ArrayList<Equipo> equipos)
-	// public static void listarPronosticosCSV(LectorArchivosCSV lectorArchivos)
-	// public static void listarResultadosCSV(LectorArchivosCSV lectorArchivos)
 	
 	public static void listarInformacion(Configuracion config) {
 		System.out.println("INFORMACION GENERAL\n-------------------\n");
@@ -86,11 +77,25 @@ public class Listados {
         		System.out.print(persona.getPronosticos().get(i).getEquipo().getNombreEquipo());
         		System.out.print(" "+persona.getPronosticos().get(i).getPronostico());
         		System.out.print("\n");
-        		//			System.out.println("Pronóstico"+(i+1)+": "+pronosticos.get(i).toString());
         	}
         	System.out.print("\n");
         }
-//		System.out.print("\n");
+	}
+
+	public static void listarTorneo(ArrayList<Fase> fases) {
+		System.out.println("DETALLE DE TORNEO\n-----------------\n");
+		for (Fase fase : fases) {
+			System.out.println("      * Fase id "+fase.getIdFase()+", número "+fase.getNroFase());
+			for (Ronda ronda : fase.getRondas()) {
+				System.out.println("            - Ronda id "+ronda.getIdRonda()+", número "+ronda.getNroRonda());
+				for (Partido partido : ronda.getPartidos()) {
+					System.out.println("                  - Partido id "+partido.getIdPartido()+": "
+							+partido.getEquipo1().getNombreEquipo()+" ( "+partido.getGolesEquipo1()+" - "
+							+partido.getGolesEquipo2()+" ) "+partido.getEquipo2().getNombreEquipo());
+				}
+			}
+			System.out.print("\n");
+		}
 	}
 
 	public static void listarFases(ArrayList<Fase> fases) {

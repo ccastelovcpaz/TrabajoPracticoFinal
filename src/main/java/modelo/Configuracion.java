@@ -20,19 +20,19 @@ public class Configuracion {
 	
 	public Configuracion() {} ;
 	
-	public Configuracion(int puntosSiAciertaGanador, int puntosSiAciertaEmpate, int puntosSiAciertaPerdedor,
-			int puntosExtraAciertaRonda, int puntosExtraAciertaFase, int cantidadArgumentosArchivoResultados,
-			int cantidadArgumentosArchivoPronosticos, String separadorCSV, String baseDeDatos) {
-		this.puntosSiAciertaGanador = puntosSiAciertaGanador;
-		this.puntosSiAciertaEmpate = puntosSiAciertaEmpate;
-		this.puntosSiAciertaPerdedor = puntosSiAciertaPerdedor;
-		this.puntosExtraAciertaRonda = puntosExtraAciertaRonda;
-		this.puntosExtraAciertaFase = puntosExtraAciertaFase;
-		this.cantidadArgumentosArchivoResultados = cantidadArgumentosArchivoResultados;
-		this.cantidadArgumentosArchivoPronosticos = cantidadArgumentosArchivoPronosticos;
-		this.separadorCSV = separadorCSV;
-		this.baseDeDatos = baseDeDatos;
-	}
+//	public Configuracion(int puntosSiAciertaGanador, int puntosSiAciertaEmpate, int puntosSiAciertaPerdedor,
+//			int puntosExtraAciertaRonda, int puntosExtraAciertaFase, int cantidadArgumentosArchivoResultados,
+//			int cantidadArgumentosArchivoPronosticos, String separadorCSV, String baseDeDatos) {
+//		this.puntosSiAciertaGanador = puntosSiAciertaGanador;
+//		this.puntosSiAciertaEmpate = puntosSiAciertaEmpate;
+//		this.puntosSiAciertaPerdedor = puntosSiAciertaPerdedor;
+//		this.puntosExtraAciertaRonda = puntosExtraAciertaRonda;
+//		this.puntosExtraAciertaFase = puntosExtraAciertaFase;
+//		this.cantidadArgumentosArchivoResultados = cantidadArgumentosArchivoResultados;
+//		this.cantidadArgumentosArchivoPronosticos = cantidadArgumentosArchivoPronosticos;
+//		this.separadorCSV = separadorCSV;
+//		this.baseDeDatos = baseDeDatos;
+//	}
 
 	public Configuracion(String rutaArchivoConfiguracion) {
         try {

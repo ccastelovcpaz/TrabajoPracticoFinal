@@ -1,17 +1,17 @@
-C:\Users\noteb\Documents\GitHub\Lector CSV\argentina-programa-java-ejemplo-archivos\LectorCSV\src\main\java\modelo\Partido.java
-C:\Users\noteb\Documents\GitHub\Lector CSV\argentina-programa-java-ejemplo-archivos\LectorCSV\src\main\java\modelo\Fase.java
-C:\Users\noteb\Documents\GitHub\Lector CSV\argentina-programa-java-ejemplo-archivos\LectorCSV\src\main\java\modelo\Equipo.java
-C:\Users\noteb\Documents\GitHub\Lector CSV\argentina-programa-java-ejemplo-archivos\LectorCSV\src\main\java\modelo\LectorArchivosCSV.java
-C:\Users\noteb\Documents\GitHub\Lector CSV\argentina-programa-java-ejemplo-archivos\LectorCSV\src\main\java\modelo\ArchivoPronosticos.java
-C:\Users\noteb\Documents\GitHub\Lector CSV\argentina-programa-java-ejemplo-archivos\LectorCSV\src\main\java\modelo\Configuracion.java
-C:\Users\noteb\Documents\GitHub\Lector CSV\argentina-programa-java-ejemplo-archivos\LectorCSV\src\main\java\modelo\Pronostico.java
-C:\Users\noteb\Documents\GitHub\Lector CSV\argentina-programa-java-ejemplo-archivos\LectorCSV\src\main\java\modelo\Ronda.java
-C:\Users\noteb\Documents\GitHub\Lector CSV\argentina-programa-java-ejemplo-archivos\LectorCSV\src\main\java\modelo\ArchivoResultados.java
-C:\Users\noteb\Documents\GitHub\Lector CSV\argentina-programa-java-ejemplo-archivos\LectorCSV\src\main\java\modelo\ResultadoEquipoEnum.java
-C:\Users\noteb\Documents\GitHub\Lector CSV\argentina-programa-java-ejemplo-archivos\LectorCSV\src\main\java\modelo\CalcularPuntos.java
-C:\Users\noteb\Documents\GitHub\Lector CSV\argentina-programa-java-ejemplo-archivos\LectorCSV\src\main\java\modelo\Listados.java
-C:\Users\noteb\Documents\GitHub\Lector CSV\argentina-programa-java-ejemplo-archivos\LectorCSV\src\main\java\modelo\PronosticosBD.java
-C:\Users\noteb\Documents\GitHub\Lector CSV\argentina-programa-java-ejemplo-archivos\LectorCSV\src\main\java\modelo\Persona.java
-C:\Users\noteb\Documents\GitHub\Lector CSV\argentina-programa-java-ejemplo-archivos\LectorCSV\src\main\java\org\example\Main.java
-C:\Users\noteb\Documents\GitHub\Lector CSV\argentina-programa-java-ejemplo-archivos\LectorCSV\src\main\java\modelo\ConectorSQL.java
-C:\Users\noteb\Documents\GitHub\Lector CSV\argentina-programa-java-ejemplo-archivos\LectorCSV\src\main\java\modelo\LineaIncorrectaException.java
+C:\Users\noteb\eclipse-workspace-2\PronosticoDeportivo\src\main\java\modelo\ArchivoPronosticos.java
+C:\Users\noteb\eclipse-workspace-2\PronosticoDeportivo\src\main\java\modelo\Pronostico.java
+C:\Users\noteb\eclipse-workspace-2\PronosticoDeportivo\src\main\java\modelo\ConectorSQL.java
+C:\Users\noteb\eclipse-workspace-2\PronosticoDeportivo\src\main\java\org\example\Main.java
+C:\Users\noteb\eclipse-workspace-2\PronosticoDeportivo\src\main\java\modelo\ResultadoEquipoEnum.java
+C:\Users\noteb\eclipse-workspace-2\PronosticoDeportivo\src\main\java\modelo\Ronda.java
+C:\Users\noteb\eclipse-workspace-2\PronosticoDeportivo\src\main\java\modelo\Equipo.java
+C:\Users\noteb\eclipse-workspace-2\PronosticoDeportivo\src\main\java\modelo\CalcularPuntos.java
+C:\Users\noteb\eclipse-workspace-2\PronosticoDeportivo\src\main\java\modelo\PronosticosBD.java
+C:\Users\noteb\eclipse-workspace-2\PronosticoDeportivo\src\main\java\modelo\Listados.java
+C:\Users\noteb\eclipse-workspace-2\PronosticoDeportivo\src\main\java\modelo\Configuracion.java
+C:\Users\noteb\eclipse-workspace-2\PronosticoDeportivo\src\main\java\modelo\Persona.java
+C:\Users\noteb\eclipse-workspace-2\PronosticoDeportivo\src\main\java\modelo\ArchivoResultados.java
+C:\Users\noteb\eclipse-workspace-2\PronosticoDeportivo\src\main\java\modelo\LectorArchivosCSV.java
+C:\Users\noteb\eclipse-workspace-2\PronosticoDeportivo\src\main\java\modelo\Fase.java
+C:\Users\noteb\eclipse-workspace-2\PronosticoDeportivo\src\main\java\modelo\LineaIncorrectaException.java
+C:\Users\noteb\eclipse-workspace-2\PronosticoDeportivo\src\main\java\modelo\Partido.java
