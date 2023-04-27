@@ -100,6 +100,10 @@ public class Persona {
 		this.pronosticos.add(nuevoPronostico);
 	}
 	
+	public int puntajeFinal() {
+		return puntosPartidos+puntosRondas+puntosFases;
+	}
+	
 	@Override
 	public String toString() {
 		return "Persona [nombre=" + nombre + ", puntosPartidos=" + puntosPartidos + ", puntosRondas=" + puntosRondas

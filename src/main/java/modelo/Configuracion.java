@@ -16,6 +16,7 @@ public class Configuracion {
 	private int cantidadArgumentosArchivoPronosticos;
 	private String separadorCSV;
 	private String baseDeDatos;
+	private String informacion;
 	
 	public Configuracion() {} ;
 	
@@ -120,6 +121,14 @@ public class Configuracion {
 
 	public void setBaseDeDatos(String baseDeDatos) {
 		this.baseDeDatos = baseDeDatos;
+	}
+	
+	public String getInformacion() {
+		return this.informacion;
+	}
+
+	public void setInformacion(String informacion) {
+		this.informacion = informacion;
 	}
 
 	@Override

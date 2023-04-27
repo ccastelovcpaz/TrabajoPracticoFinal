@@ -4,9 +4,11 @@ modelo\Pronostico.class
 modelo\ConectorSQL.class
 org\example\Main.class
 modelo\Configuracion.class
+modelo\Listados$1.class
 modelo\Partido.class
 modelo\CalcularPuntos.class
 modelo\Ronda.class
+modelo\Listados$2.class
 modelo\Equipo.class
 modelo\ArchivoResultados.class
 modelo\Persona.class
